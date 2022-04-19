@@ -148,6 +148,9 @@ class FullyConnectedNetwork(TFModelV2):
 
     def value_function(self) -> TensorType:
         return tf.reshape(self._value_out, [-1])
+    
+    def save_model(self, path):
+        tf.saved_model.save(self.base_model, path)
 
 
 class Keras_FullyConnectedNetwork(tf.keras.Model if tf else object):
